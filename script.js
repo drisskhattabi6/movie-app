@@ -18,7 +18,11 @@ searchBtn.addEventListener('click', function () {
 
 searchInput.addEventListener('input', function () {
     const searchValue = searchInput.value
-    getMovies(Search_URL + searchValue + '"')
+    if (searchValue && searchValue !== "") {
+        getMovies(Search_URL + searchValue + '"')
+    } else {
+        window.location.reload()
+    }
 })
 
 async function getMovies(url) {
