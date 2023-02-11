@@ -16,6 +16,11 @@ searchBtn.addEventListener('click', function () {
     }
 })
 
+searchInput.addEventListener('input', function () {
+    const searchValue = searchInput.value
+    getMovies(Search_URL + searchValue + '"')
+})
+
 async function getMovies(url) {
     const res = await fetch(url)
     const data = await res.json()
