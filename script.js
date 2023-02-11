@@ -15,7 +15,6 @@ searchBtn.addEventListener('click', function () {
         window.location.reload()
     }
 })
-
 searchInput.addEventListener('input', function () {
     const searchValue = searchInput.value
     if (searchValue && searchValue !== "") {
@@ -29,6 +28,7 @@ async function getMovies(url) {
     const res = await fetch(url)
     const data = await res.json()
     
+    console.log(data)
     console.log(data.results)
     showMovies(data.results)
 }
@@ -38,7 +38,7 @@ const films = document.getElementById('films')
 function showMovies(movies) {
     films.innerHTML = ""
     let rate = "green"
-    for(let i = 0 ; i < 20 ; i++) {
+    for(let i = 0 ; i < movies.length ; i++) {
         if (movies[i].vote_average <= 5.5) rate = "red"
         else if (movies[i].vote_average > 5.5 && movies[i].vote_average <= 7.5) rate = "orange"
         else rate = "green"
